@@ -5,7 +5,55 @@
 # @File: t21D.py
 # @Software: PyCharm
 
+import time
 
+start = time.time()
+
+
+def gys(a, b):
+    while (b != 0):
+        temp = a % b
+        a = b
+        b = temp
+    print("a", a)
+    return a
+
+
+def gbs(a, b):
+    res = a * b / gys(a, b)
+    return res
+
+
+def minDp(i, j):
+    mindp = 999999999999
+    for m in range(i - buzhang, i):
+        for n in range(j - buzhang, j):
+            if mindp > dp[m][n]:
+                mindp = dp[m][n]
+    return mindp
+
+
+buzhang = 21
+dp = [[9999999] * (2021 + buzhang) for i in range(2021 + buzhang)]
+map1 = [[0] * (2021) for i in range(2021)]
+for i in range(0, 2021):
+    for j in range(i, 2021):
+        if i == j:
+            map1[i][j] = 0
+        else:
+            map1[i][j] = gbs(i + 1, j + 1)
+            map1[j][i] = map1[i][j]
+print(map1)
+for i in range(buzhang, 2021 + buzhang):
+    for j in range(buzhang, 2021 + buzhang):
+        if i == buzhang and j == buzhang:
+            dp[i][j] = map1[i - buzhang][j - buzhang]
+        else:
+            dp[i][j] = map1[i - buzhang][j - buzhang] + minDp(i, j)
+print(dp[-1][-1])
+end = time.time()
+
+print('Running time: %s Seconds' % (end - start))
 
 
 # ---------------------------------------------
