@@ -4,6 +4,8 @@
 
 https://www.runoob.com/python3/python3-examples.html
 
+https://www.sohu.com/a/329020189_571478
+
 # 试题集
 
 https://www.lanqiao.cn/problems/
